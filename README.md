@@ -1,13 +1,13 @@
 # Node.js 全栈学习
-
+- [x]
 - [ ] JavaScript
-	- [ ] JavaScript基础
+	- [x] JavaScript基础
 	- [ ] Aysnc
-	- [ ] Promise
+	- [x] Promise
 	- [ ] Wait
 	- [ ] Ajax
 	- [ ] ES6
-	- [ ] JQuery
+	- [x] JQuery
 - [ ] Css
 	- [ ] Css 基础
 	- [ ] Css 3
@@ -16,19 +16,19 @@
 	- [ ] Html 5
 - [ ] Vue
 	- [ ] Vue 使用
-		- [ ] Vue
-		- [ ] Vue-router
-		- [ ] Vuex
+		- [x] Vue
+		- [x] Vue-router
+		- [x] Vuex
 	- [ ] Vue 原理/源码
 		- [ ] Vue
 		- [ ] Vue-router
 		- [ ] Vuex
 - [ ] 自动化和模块化
-	- [ ] webpack
+	- [x] webpack
 	- [ ] gulp
 	- [ ] browserify
 - [ ] 常用布局
-	- [ ] 盒模型
+	- [x] 盒模型
 - [ ] 浏览器兼容性和移动设备兼容性
 - [ ] 性能优化
 - [ ] 项目重构
