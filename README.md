@@ -1,1 +1,63 @@
 # Node.js 全栈学习
+
+- [ ] JavaScript
+	- [ ] JavaScript基础
+	- [ ] Aysnc
+	- [ ] Promise
+	- [ ] Wait
+	- [ ] Ajax
+	- [ ] ES6
+	- [ ] JQuery
+- [ ] Css
+	- [ ] Css 基础
+	- [ ] Css 3
+- [ ] Html
+	- [ ] Html 基础
+	- [ ] Html 5
+- [ ] Vue
+	- [ ] Vue 使用
+		- [ ] Vue
+		- [ ] Vue-router
+		- [ ] Vuex
+	- [ ] Vue 原理/源码
+		- [ ] Vue
+		- [ ] Vue-router
+		- [ ] Vuex
+- [ ] 自动化和模块化
+	- [ ] webpack
+	- [ ] gulp
+	- [ ] browserify
+- [ ] 常用布局
+	- [ ] 盒模型
+- [ ] 浏览器兼容性和移动设备兼容性
+- [ ] 性能优化
+- [ ] 项目重构
+- [ ] JavaScript 设计模式
+	- [ ] JS 和 MVC
+	- [ ] JS 和 MVVM
+- [ ] Chrome，Safari 前端调试工具
+	- [ ] Chrome
+	- [ ] Safari
+- [ ] B/S架构原理
+- [ ] BootStrap【掌握】
+- [ ] WebKit、Blink浏览器内核架构【了解】
+- [ ] Http/TCP协议
+	- [ ] get/post区别
+	- [ ] 其他
+- [ ] Socket【了解】
+- [ ] TypeScript/Flow
+	- [ ] TypeScript
+	- [ ] Flow
+- [ ] Canvas/WebGL【了解】
+	- [ ] Canvas
+	- [ ] WebGL
+- [ ] WebApp【了解】
+- [ ] Web语义化
+- [ ] W3C标准
+---
+- [ ] Node.js
+- [ ] Express
+- [ ] Koa
+- [ ] MySql
+- [ ] MongoDB
+- [ ] Redis
