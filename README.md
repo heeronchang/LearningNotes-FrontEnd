@@ -1,11 +1,11 @@
 # Node.js 全栈学习
-- [x]
 - [ ] JavaScript
 	- [x] JavaScript基础
 	- [ ] Aysnc
 	- [x] Promise
 	- [ ] Wait
 	- [ ] Ajax
+	- [ ] aios
 	- [ ] ES6
 	- [x] JQuery
 - [ ] Css

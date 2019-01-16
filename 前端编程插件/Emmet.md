@@ -137,3 +137,45 @@
   <li class="item5"></li>
 </ul>
 ```
+
+- `ul>li.item$@-*5` 改变顺序
+
+```
+<ul>
+  <li class="item5"></li>
+  <li class="item4"></li>
+  <li class="item3"></li>
+  <li class="item2"></li>
+  <li class="item1"></li>
+</ul>
+```
+
+- `ul>li.item$@3*5`从指定数字开始
+
+```
+<ul>
+  <li class="item3"></li>
+  <li class="item4"></li>
+  <li class="item5"></li>
+  <li class="item6"></li>
+  <li class="item7"></li>
+</ul>
+```
+
+- `a{click me}`
+
+```
+<a href="">click me</a>
+```
+
+- `a{click}+b{click}`
+
+```
+<a href="">click</a><b>click</b>
+```
+
+- `a>{click}+b{here}`或`a{click}>b{here}`
+
+```
+<a href="">click<b>here</b></a>s
+```
