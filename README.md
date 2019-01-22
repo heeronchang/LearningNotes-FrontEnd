@@ -60,4 +60,7 @@
 - [ ] Koa
 - [ ] MySql
 - [ ] MongoDB
+	- [x] MongoDB 基础
+	- [x] Mongoose
+	- [ ] MongoDB 进阶
 - [ ] Redis
