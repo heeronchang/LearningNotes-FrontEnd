@@ -16,6 +16,10 @@
 
 `Nodejs` 中 `exports` 是 `module.exports` 的一个引用。
 
+`__dirname` 获取当前文件模块所属目录的绝对路径
+
+`__filename` 获取当前文件的绝对路径
+
 ### CommonJS 模块规范
 
 在 `Nodejs` 中的 `Javascript` 具有一个模块系统。
@@ -32,7 +36,6 @@
 - `Url` 路径操作
 - `path` 路径处理
 - `OS` 操作系统
-
 
 ### 第三方模块
 需要安装

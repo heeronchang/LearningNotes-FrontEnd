@@ -59,8 +59,10 @@
 - [ ] Express
 - [ ] Koa
 - [ ] MySql
+	- [x] Nodejs 连接 MySql
 - [ ] MongoDB
 	- [x] MongoDB 基础
 	- [x] Mongoose
+	- [x] Nodejs 链接 MongoDB
 	- [ ] MongoDB 进阶
 - [ ] Redis
