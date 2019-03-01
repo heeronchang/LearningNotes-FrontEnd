@@ -9,13 +9,13 @@
 	- [ ] ES6
 	- [x] JQuery
 - [ ] Css
-	- [ ] Css 基础
+	- [x] Css 基础
 	- [ ] Css 3
 - [ ] Html
-	- [ ] Html 基础
+	- [x] Html 基础
 	- [ ] Html 5
 - [ ] Vue
-	- [ ] Vue 使用
+	- [x] Vue 使用
 		- [x] Vue
 		- [x] Vue-router
 		- [x] Vuex
@@ -36,7 +36,7 @@
 	- [ ] JS 和 MVC
 	- [ ] JS 和 MVVM
 - [ ] Chrome，Safari 前端调试工具
-	- [ ] Chrome
+	- [x] Chrome
 	- [ ] Safari
 - [ ] B/S架构原理
 - [ ] BootStrap【掌握】
@@ -44,19 +44,21 @@
 - [ ] Http/TCP协议
 	- [ ] get/post区别
 	- [ ] 其他
-- [ ] Socket【了解】
+- [x] Socket【了解】
 - [ ] TypeScript/Flow
 	- [ ] TypeScript
 	- [ ] Flow
 - [ ] Canvas/WebGL【了解】
-	- [ ] Canvas
+	- [x] Canvas
 	- [ ] WebGL
 - [ ] WebApp【了解】
 - [ ] Web语义化
 - [ ] W3C标准
 ---
 - [ ] Node.js
+    - [x] Node.js 基础
 - [ ] Express
+    - [x] Express 基础
 - [ ] Koa
 - [ ] MySql
 	- [x] Nodejs 连接 MySql
