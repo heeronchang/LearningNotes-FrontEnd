@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript">
+    function hasGetUserMedia() {
+      return (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
+    }
+    if (hasGetUserMedia()) {
+      alert("支持获取媒体设备权限");
+    } else {
+      alert("不支持获取媒体设备权限");
+    }
+  </script>
+  <style>
+    #myVideo {
+      /* transform: scaleY(-1); */
+      transform: scaleX(-1);
+      /* transform: scaleX(0.5); */
+      /* -webkit-filter: sepia(80%); */
+    }
+  </style>
+</head>
+
+<body>
+  <video id="myVideo" autoplay width="400" height="300"></video>
+  <img src="" id="img" alt="">
+  <canvas id="canvas" width="400" height="300" style="display: none;"></canvas>
+
+  <script type="text/javascript">
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
+      window.navigator.mozGetUserMedia;
+    window.URL = window.URL || window.webkitURL;
+
+    const video = document.getElementById('myVideo');
+    video.addEventListener('click', snapshot, false);
+
+    let localMediaStream = null;
+    navigator.getUserMedia({
+        video: true,
+        audio: false
+      },
+      function(stream) {
+        // video.src = window.URL.createObjectURL(stream);
+        video.srcObject = stream;
+        localMediaStream = stream;
+      },
+      function(err) {
+        console.log(err);
+      });
+
+      function snapshot() {
+        if (localMediaStream) {
+          const canvas = document.getElementById('canvas');
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(video, 0, 0);
+          console.log('draw');
+          document.getElementById('img').src = canvas.toDataURL('imgage/png');
+        } else {
+
+        }
+      }
+  </script>
+</body>
+
+</html>
