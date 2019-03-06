@@ -833,3 +833,333 @@ ICE 是一种在以 UDP 为基础的请求/回答模式的多媒体会话用于�
   - 使用 STUN（为了穿越 NAT 而进行端口映射）实现突破 NAT 网关的 P2P 通信
   - 使用 TURN 中继服务器进行突破防火墙的中继通信
 ICE 协议在网络上通过最短途径（网络负荷最小的途径）选择被发现的候选者，并按优先级依序列举这些候选者。
+
+# 扩展的 XMLHttpRequest API
+
+### 新增 respondType 属性与 response 属性
+
+以请求二进制数据。H5 之前需要 XMLHttpRequest 对象的 overrideMimeType 方法重载 MimeType `xhr.overrideMimeType('text/plain; charset=x-user-defined')`
+
+**responseType 属性：**
+用于指定服务器返回数据的数据类型：text（默认），arrayBuffer，blob，JSON，document。
+**response属性**
+请求成功返回 response
+
+### 发送数据
+
+H5 之前大多数浏览器只能通过 XMLHttpRequest 对象的 send 方法向服务器发送字符串或 Document 对象（代表一个 XML 文档）。
+
+H5 则可以使用 send 发送字符串、Document 对象、表单数据、Blob 对象、文件以及 ArrayBuffer 对象。
+
+一个文件是一个 Blob 对象。可以使用 Blob 的方式发送文件。示例：
+
+```javascript
+let buffer = new ArrayBuffer(dataArr.length);
+let byteArray = new Int8Array(buffer);
+for(let i = 0; i < tmpArray.length; i ++) {
+  byteArray[i] = tmpArray[i];
+}
+
+const xhr = new XMLHttpRequest();
+xhr.open('POST', 'xx.js', true);
+xhr.send(buffer);
+```
+### 跨域数据请求
+
+H5 实现以 AJAX 方式请求得到另一个域的数据：只需要在该域中提供一个服务端的脚本文件来响应这个请求，返回该请求所需的数据即可，服务端返回响应的响应头信息中添加 Access-Control-Allow-Origin 参数指定为允许向该页面请求数据的域名+端口号，“*”代表所有域。
+
+# 使用 WebWorks 处理线程
+
+### 基本操作与线程进行数据交互
+
+一个 Worker 对象实际就是一个后台运行线程。
+
+```javascript
+// 将需要在后台执行的脚本文件的 URL 地址作为参数，创建 Worker 对象。注意后台线程不能访问页面或窗口，所以在后在执行的脚本文件不能使用 window 或 document 对象。
+const worker = new Worker("worker.js");
+
+// 获取后台线程中的消息
+worker.onmessage = function(event) {
+  // ..
+}
+
+// 向后台线程发送消息 message 可以是文本、JSON 字符串
+worker.postMessage(message);
+
+// work.js 文件
+onmessage = function(event) {
+  // do something
+  postMessage('rs');
+}
+```
+
+### 线程嵌套
+
+注意在子线程发送消息后，如果该子线程不再使用，最好使用 `close();` 关闭子线程。
+
+### 线程中可用的变量函数和类
+
+- self: 表示本线程范围内的作用域
+- postMessage(message): 用于向创建线程的源窗口发送数据
+- onmessage: 获取接收消息的事件句柄
+- importScripts(urls): 导入其它 JavaScript 脚本文件，可以导入多个：`importScripts('script1.js', 'scripts/script2.js')`。必须在同一个域中
+- navigator: 与 window.navigator 对象类似，具有 appName、platform、userAgent、appVersion。
+- sessionStorage/localStorage: 可以在线程中使用 Web Storage
+- XMLHttpRequest: 在线程中处理 AJAX 请求
+- Web Workers: 在线程中嵌套线程
+- setTimeout()/setInterval(): 在线程中实现定时处理
+- close: 结束本线程
+- eval(),isNan(),escape()等: 可以使用 JS 中所有核心函数
+- object: 可以创建和使用本地对象
+- WebSockets: 可以使用 WebSockets API 向服务器发送和接收数据
+- FileSystem: 可以在线程中通过同步 FileSystem API 实现受沙箱保护的文件系统中的文件及目录的创建、更新和删除操作
+
+### SharedWorker
+
+SharedWorker 可以让多个页面共用一个后台线程。
+```javascript
+// url 用于指定后台脚本文件的地址，[name] 可选参数，用于指定 worker 的名称
+const worker = new SharedWorker(url, [name]);
+```
+#### 页面通信
+
+当 SharedWorker 对象被创建时，一个 MessagePort 对象也同时被创建，可以通过 SharedWorker 对象的 port 属性值来访问该对象，该对象代表页面通信时需要使用的端口：
+- postMessage
+- start：用于激活端口，开始监听端口是否接收到消息
+- close：用于关闭并停用端口
+
+```javascript
+const worker = new SharedWorker('script1.js');
+const port = worker.port;
+port.postMessage(message);
+port.onmessage = function(event) {}
+port.addEventListener('message', function() {}, false);
+port.start();
+```
+当后台线程开始通信时会触发 connect 事件
+
+```
+onconnect = function(event) {
+  // event 对象中的 ports 属性是一个集合
+  console.log(event.ports);
+}
+```
+
+# 获取地理位置信息
+
+H5 中为 window.navigator 新增了 geolocation 属性，用来获取用户位置信息
+
+### 获取当前地理位置
+
+```JavaScript
+// 获取成功，获取失败，可选属性
+getCurrentLocation(onSuccess, onError, options);
+```
+获取地理位置成功的回调函数有一个参数 position 对象。
+
+第三个可选参数列表：
+- enableHighAccuracy
+- timeout
+- maximumAge 对地理位置信息缓存对有效时间（单位毫秒）
+
+### 持续监听当前地理位置信息
+
+`int watchCurrentPosition(onSuccess, onError, options)`
+
+返回值 int 与 setInterval 返回值类似，可以使用 clearWatch 清除监听
+
+### 停止获取当前用户的地理位置信息
+
+`void clearWatch(watchId)`
+
+### position 对象
+
+获取成功的回调函数中通过 position 对象获取地理位置信息
+
+- latitude
+- longitude
+- altitude
+- accuracy   
+- altitudeAccuracy
+- heading
+- speed
+- timestamp
+
+### 在页面上使用 Google 地图
+
+# 拖放 API 与 通知 API
+
+## 拖放 API
+
+### 实现拖放的步骤
+
+1. 将想要拖放的元素的 dragable 设置为 true，img 和 a（必须指定 href）默认允许拖放。
+2. 编写与拖放有关的事件处理代码
+
+拖放有关的几个事件：
+
+被拖放的元素
+- dragstart: 开始拖放操作
+- drag: 拖放过程
+拖放过程中鼠标经过的元素
+- dragenter: 被拖放的元素开始进入本元素的范围内
+- dragover: 被拖放的元素正在元素范围内移动
+- dragleave: 被拖放的元素离开本元素范围
+被拖放的目标元素
+- drop: 有其它元素被拖放到了本元素中
+被拖放的元素
+- dragend: 拖放操作结束
+
+开始拖动时要把拖动的数据利用 setData() 存入 DataTransfer 对象，setData() 第一个参数表示携带数据的数据种类的字符串，第二个参数为要携带的数据。
+
+针对拖放的目标元素，必须在 dragend 或 drageover 事件内阻止默认事件 `事件对象.preventDefault()`，因为默认情况下目标元素是不允许接受元素的，为了把元素拖放到其中，必须关闭默认处理。
+
+目标元素接受被拖放的元素后，调用 getData() 从 Datatransfer 那里获得数据。
+
+另外，目标元素的 drop 事件中关闭默认处理、整个页面关闭默认处理（页面是先于其它元素接受拖放的，如果页面上拒绝拖放，那么页面上的其它元素也就不能接受拖放了）。
+
+现在支持拖放处理 MIME 类型有：
+- text/plain: 文本文字
+- text/html: HTML 文字
+- text/xml: XML 文字
+- text/uri-list: URL 列表，每个 URL 为一行。
+
+#### DataTransfer 对象的属性与方法
+
+## 通知 API
+
+无论用户在查看哪一个浏览器标签中的内容，都可以向用户显示通知信息
+
+### 使用通知 API
+
+1. 检查浏览器是否支持
+
+```javascript
+if (window.Notification) {
+
+}
+```
+2. 请求显示通知的权限
+
+```javascript
+window.Notification.requestPermission();
+```
+此方法只在用户显式触发的事件（单击按钮、单击鼠标左键或键盘上某个键）中有效。
+
+```javascript
+// 判断权限 perssion 取值：default，granted，denied
+if (window.Notification.perssion == 'granted') {
+  // ..
+} else {
+  window.Notification.requestPermission();
+}
+```
+
+3. 创建通知
+
+`let nofification = new Notification(title, options)`
+
+options 取值：
+- dir：通知中文字方向。ltr（从左向右），rtl（从右向左），默认 ltr
+- lang：语言
+- body：通知内容
+- tag：通知的ID
+- icon：图片的 URL 地址
+
+  **通知方法和事件**
+onshow() 通知显示事件
+close() 关闭通知
+onclose() 通知关闭事件
+onclick() 单击事件
+onerror()
+
+# Page Visibility API
+
+该 API 让开发者知道一个 Web 页面在何时变为可见或获取焦点。
+
+#### 实现 Page Visibility API
+
+1. 检测浏览器是否支持
+`document.hidden` `document.mozHidden` `document.msHidden` `document.webkitHidden`
+
+2. 监听 visibilityState
+`document.visibilityState` 取值 visible,hidden,prerender
+document.addEventListener(visibilityChange, function() {
+  if (document["hidden"]) {}
+}, false)
+
+# FullScreen API
+
+根据 DOM 对象的根结点对象 document.documentElement 或元素的 requestFullScreen 判断浏览器是否支持全屏。
+
+通过 DOM 对象或某个元素的 exitFullScreen 方法或 CanvelFullScreen 退出全屏状态。
+
+事件：fullscreenchange
+
+# 锁定鼠标指针 API
+
+鼠标指针锁定 API 是一个关于鼠标指针的移动信息（不是鼠标光标的绝对位置信息）的 API。它允许开发者获取鼠标指针的移动信息，将鼠标事件锁定到单个目标元素上，消除对于鼠标指针在某个方向上可移动距离的限制，同时从屏幕上移除（本来可见的）鼠标指针。
+
+当应用程序中需要控制鼠标指针的移动或旋转某个对象时，该 API 将变得非常有用。
+
+目前使用鼠标指针锁定 API 需要把元素设定为全屏状态
+`pointerLockElement.requestPointerLock();`
+
+取消锁定 `document.exitPointerLock();`
+
+事件 `pointerlockchange`
+
+# 高性能实现动画 requestAnimationFrame
+
+window.requestAnimationFrame 可以高质量的同时执行使用 js 脚本实现的动画与 CSS 中 transition 样式属性的动画。
+
+通过 window.requestAnimationFrame 方法，用户切换浏览器标签时，页面中动画会被暂停，减少 CPU，GPU 与内存的消耗。
+
+使用：
+```JavaScript
+window.requestAnimationFrame = (function() {
+  return window.requestAnimationFrame ||
+  window.webkitRequestAnimationFrame ||
+  ..  ||
+  window.msRequestAnimationFrame ||
+  function () {
+    window.setTimeout(callback, 1000 / 60 );
+  };
+})();
+```
+
+# 检测页面变化 Mutation Observer
+
+```javascript
+function onchange(mutationRecords, mutationObserver) {
+  // 检测到 DOM 变化
+}
+const div = document.getElementById('div');
+options = {
+  childList: true,
+  attributes: true,
+  characterData: true,
+  ...
+};
+
+const mo = new mutationObserver(onchange);
+mo.observe(div, options);
+
+```
+
+# Beacon API
+
+从一个页面向服务器端发送一些数据，并且不需要等待服务器端响应。例如在用户离开页面之前提交一些分析或诊断数据。
+
+通常，在离开页面前发送数据需要监听页面的 unload 事件，但是 unload 事件回调函数中发出的请求必须是一个同步请求，因为大多数浏览器通常忽略 unload 事件回调函数中发出的异步请求。
+
+而 Beacon API 就解决了这一问题。它允许在 unload 事件回调函数中发送携带少量数据的异步请求，它不会阻塞 unload 事件回调函数中的其它任何代码。
+
+### Beacon API 使用方法
+
+在 Beacon 中为 navigator 对象提供了一个 sendBeacon 方法，该方法将数据放入一个队列中，当前页面被关闭时将立即发送数据
+
+```JavaScript
+// url 接受数据的服务器地址（必须），data ArrayBufferView/Blob/FormData/字符串
+navigator.sendBeacon(url, data);
+```

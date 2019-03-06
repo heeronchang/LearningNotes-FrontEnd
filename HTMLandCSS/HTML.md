@@ -274,3 +274,88 @@ div {
   transform: skew(30deg, 0deg);
 }
 ```
+
+# 动画 animation
+
+### 声明动画
+
+```CSS
+/* 关键帧动画 */
+@keyframes identifier {
+  from {
+    /* CSS 属性 */
+  }
+  to {
+    /* CSS 属性 */
+  }
+}
+
+@keyframes identifier2 {
+  0% {
+    /* CSS 属性 */
+  }
+  50% {
+    /* CSS 属性 */
+  }
+  100% {
+    /* CSS 属性 */
+  }
+}
+```
+
+### 调用动画
+`animation: animation-name animation-duration animation-timing-function animation-delay animation-iteration-count animation-direction animation-play-state animation-fill-mode`
+
+### 结合 clip-path 动画
+
+clip-path 是用来裁剪的，如对一个 div 应用 clip-path: circle(40% at 50% 50%) 意为裁剪一个半径为 40%，圆心在（50%， 50%）位置的一个圆。
+
+示例：
+```CSS
+div img {
+  clip-path: circle(10% at 50% 50%);
+  transition: clip-path 8s ease-in-out;
+}
+div:hover img {
+  clip-path: circle(40% at 50% 50%);
+}
+```
+
+# 文字阴影
+
+text-shodow: 水平位置 垂直位置 模糊距离 阴影颜色
+
+文字阴影比较影响处理器性能
+
+# 背景缩放
+
+使用场景：iOS 2x 图片等。
+`background-size: 100px 100px;` 如果只设置一个值，高度则默认为 auto；
+
+`background-size: cover;` 自动等比例缩放，铺满。
+
+`background-size: content;` 等比例缩放，宽或高铺满。
+
+# 背景渐变
+
+`background: -webkit-linear-gradient(渐变起始位置，渐变起始颜色，渐变结束颜色) `
+`background:-webkit-linear-gradient(渐变起始位置，颜色 位置，颜色 位置 ...)`
+
+# 多背景
+
+`background: url(image1) no-repeat top left, url(image2) no-repeat bottom right, ...;`
+
+多背景图时，背景色写在下面，防止被成叠掉。
+
+# 半透明盒子和半透明背景
+
+`background: rbga(0, 0, 0, 0.3)` 盒子背景半透明
+`opcacity: 0.2;` 盒子半透明
+
+# 3D
+
+`transform: rorateX()` `transform: rorateY()`
+
+`perspective: 500px;` 透视，一般加给父元素。
+
+`backface-visibility` 元素不面向屏幕时不可见
