@@ -13,7 +13,7 @@
 	- [ ] Css 3
 - [ ] Html
 	- [x] Html 基础
-	- [ ] Html 5
+	- [x] Html 5
 - [ ] Vue
 	- [x] Vue 使用
 		- [x] Vue
@@ -27,8 +27,9 @@
 	- [x] webpack
 	- [ ] gulp
 	- [ ] browserify
-- [ ] 常用布局
+- [x] 常用布局
 	- [x] 盒模型
+	- [x] Flex 布局
 - [ ] 浏览器兼容性和移动设备兼容性
 - [ ] 性能优化
 - [ ] 项目重构
