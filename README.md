@@ -4,7 +4,7 @@
 	- [ ] Aysnc
 	- [x] Promise
 	- [ ] Wait
-	- [ ] Ajax
+	- [x] Ajax
 	- [ ] aios
 	- [ ] ES6
 	- [x] JQuery
