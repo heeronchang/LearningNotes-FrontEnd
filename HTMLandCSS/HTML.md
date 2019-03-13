@@ -359,3 +359,36 @@ text-shodow: 水平位置 垂直位置 模糊距离 阴影颜色
 `perspective: 500px;` 透视，一般加给父元素。
 
 `backface-visibility` 元素不面向屏幕时不可见
+
+# 控件修改样式问题
+
+对于 `checkbox` 等不能常规修改外观的控件，可以利用伪元素实现自定义样式。
+
+- checkbox
+
+```HTML
+<style>
+  .checkbox {
+    display: none;
+  }
+
+  i {
+    font-style: normal;
+  }
+
+  .checkbox:checked + i::after {
+    content: "🤣";
+  }
+
+  .checkbox + i::after {
+    content: "😂";
+  }
+</style>
+
+<label>
+  <input type="checkbox" class="checkbox">
+  <i></i>
+</label>
+```
+
+# 

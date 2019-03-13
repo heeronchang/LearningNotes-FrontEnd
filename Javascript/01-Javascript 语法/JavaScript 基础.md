@@ -1,3 +1,34 @@
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [JavaScript 基础](#javascript-基础)
+	- [对象](#对象)
+			- [三种创建对象的方式](#三种创建对象的方式)
+			- [判断一个对象的数据类型](#判断一个对象的数据类型)
+			- [构造函数创建对象的问题](#构造函数创建对象的问题)
+			- [构造函数、实例对象和原型之间的关系](#构造函数实例对象和原型之间的关系)
+			- [自调用函数](#自调用函数)
+	- [原型](#原型)
+			- [原型的作用](#原型的作用)
+			- [原型链](#原型链)
+			- [原型继承](#原型继承)
+			- [构造函数继承](#构造函数继承)
+			- [拷贝继承](#拷贝继承)
+	- [函数](#函数)
+			- [方法中 this 指向](#方法中-this-指向)
+			- [函数也是对象，对像不一定是函数](#函数也是对象对像不一定是函数)
+			- [数组中函数的调用](#数组中函数的调用)
+	- [正在表达式](#正在表达式)
+			- [验证身份证](#验证身份证)
+	- [apply 和 call](#apply-和-call)
+	- [bind](#bind)
+	- [作用域、作用域链和预解析](#作用域作用域链和预解析)
+	- [闭包](#闭包)
+	- [沙箱](#沙箱)
+	- [递归](#递归)
+	- [真数组和伪数组](#真数组和伪数组)
+
+<!-- /TOC -->
+
 # JavaScript 基础
 
 ## 对象
@@ -161,3 +192,79 @@ arr.forEach(function (ele) {
 ```
 
 ## 正在表达式
+
+#### 验证身份证
+
+
+## apply 和 call
+
+apply 和 call 方法中如果没有传入参数，或传入 null，那么调用对象（函数）中的 this 是 window。
+
+apply 对象参数后面接收的是一个数组，call 的对象参数后面接收的是多个任意类型的参数。
+
+## bind
+
+相当于复制，也会改变 this 指向
+
+```JavaScript
+// this 会指向 obj, 返回值复制之后这个方法/函数
+let foo = funcName.bind(obj, arg1, arg2, ...);
+```
+
+## 作用域、作用域链和预解析
+
+局部作用域和全局作用域。
+
+作用域链是指从里到外层层搜索变量。
+
+预解析就是变量声明、函数声明的提升。
+
+## 闭包
+
+```JavaScript
+function foo() {
+  let num = 1;
+  return function() {
+    num ++;
+    return num;
+  }
+}
+
+const bar = foo();
+console.log(bar()); // 2
+console.log(bar()); // 3
+```
+
+## 沙箱
+
+## 递归
+
+## 真数组和伪数组
+
+```JavaScript
+let arr = [10, 20, 30];
+let obj = {
+  0: 10,
+  1: 20,
+  3: 30,
+  length: 3
+}
+```
+
+## attr 和 prop 区别
+
+- attr 访问的是元素属性
+- prop 访问的是元素对应的 DOM 对象的属性
+
+## 富文本编辑器插件
+
+- UEditor
+- CKEditor
+
+实现原理：`document.contentEditable = true;` `document.execCommand()`
+
+`execCommand` 有三个参数：
+1. Comand Name - 命令名称；
+2. ShowDefaultUI - 未实现，一般设置为 false；
+3. ValueArguments - 命令的参数。可以设置为 null，但当要设置一行文本的标签时（h1,h2,p)等，
+		需要使用 formatBlock 命令，并把标签放到 ValueArgument 中。

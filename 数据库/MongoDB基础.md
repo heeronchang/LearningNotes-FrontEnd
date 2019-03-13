@@ -1,3 +1,14 @@
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [MongoDB 基础](#mongodb-基础)
+			- [MongoDB 基本概念](#mongodb-基本概念)
+			- [使用](#使用)
+			- [Mongoose](#mongoose)
+				- [安装](#安装)
+				- [使用](#使用)
+
+<!-- /TOC -->
+
 # MongoDB 基础
 
 #### MongoDB 基本概念
@@ -115,7 +126,7 @@ User.find({
 
 // 正则匹配查询，第二个参数指定要查询的字段
 User.find({
-  username: /^heeron/i
+  username: /^heeron/i 
 }, 'username email', function(err, res) {
   // ...
 })
