@@ -22,3 +22,88 @@ npm 是 node package manager 的简写。
 使用 cnpm 的两种方式：
 - 全局安装 cnpm （`npm i cnpm --global`），然后使用 `cnpm i xx`。
 - 全局配置包安装源 `npm config set registry https://registry.npm.taobao.org`，使用 `npm config list` 查看
+
+# config-lite
+
+config-lite 是一个轻量的读取配置文件的工具。
+
+它会根据环境变量 `NODE_ENV` 的不同从当前执行进程目录下的 config 目录加载不同的配置文件。默认读取 default 配置文件。
+
+如果设置了 `NODE_ENV` 则会合并指定的配置文件和 default 配置文件作为配置。config-lite 支持 .js, .json, .node, .yml, .yaml 后缀的文件。
+
+如果程序以 `NODE_ENV = test node app` 启动，则通过  `require('config-lite')`
+会依次降级查找 config/test.js, config/test.json, config/test.node, config/test.yml,
+config/test.yaml 并合并 default 配置。
+
+如果程序以 `NODE_ENV=production node app` 启动，则会依次降级查找 config/production.js,
+config/production.json, ... 并合并 default 配置。
+
+# connect-history-api-fallback
+
+单页面应用程序使用 H5 的 History API。
+
+由于单页面应用程序一般只提供一个 index.html 供浏览器访问。一般地程序中的导航使用 H5 的
+History API 实现。这样就会有一些问题：用户点击 refresh 按钮，或者直接访问非登陆页，此时，
+web 服务器就会获取资源失败并返回 404。
+
+# cookie-parser
+
+```javascript
+const express = require('express');
+const cookieParser = require('cookie-parser');
+
+const app = express();
+app.use(cookieParser());
+
+app.get('/', (req, res) => {
+  // Cookie that have not been signed
+  console.log('Cookie:', req.cookies);
+  // Cookie that have been signed
+  console.log('Signed Cookie', req.signedCookies);
+})
+
+app.listen(8080);
+```
+
+# chalk
+
+Terminal string styling done right.
+
+# connect-mongo
+
+MongoDB session store for Connect and Express
+
+# session
+
+node-session package for nodejs.
+
+- write storage memcached
+- write storage sqlite
+- write storage file
+- write storage couchdb, MongoDB, etc.
+
+# winston
+
+A logger for just about everything.
+
+# express-winston
+
+winston middleware for express.
+
+# pinyin
+
+转换中文字符为拼音
+
+# time-formater
+
+格式化日期
+
+# crypto-random-string
+
+Generate a cryptographically strong random string.
+
+Can be useful for creating an identifier, slug, salt, fixture, etc.
+
+# formidable
+
+A Node.js module for parsing form data, especially file uploads.
