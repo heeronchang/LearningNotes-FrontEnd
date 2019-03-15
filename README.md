@@ -1,16 +1,16 @@
 # Node.js 全栈学习
 - [ ] JavaScript
 	- [x] JavaScript基础
-	- [ ] Aysnc
+	- [x] Aysnc Wait
 	- [x] Promise
-	- [ ] Wait
 	- [x] Ajax
-	- [ ] aios
+	- [x] axios
 	- [ ] ES6
-	- [x] JQuery
-- [ ] Css
-	- [x] Css 基础
-	- [ ] Css 3
+	- [x] JQuery基础
+- [ ] CSS
+	- [x] CSS 基础
+	- [x] CSS 3基础
+	- [ ] CSS3 高级
 - [ ] Html
 	- [x] Html 基础
 	- [x] Html 5
@@ -41,7 +41,7 @@
 	- [ ] Safari
 - [ ] B/S架构原理
 - [ ] BootStrap【掌握】
-- [ ] WebKit、Blink浏览器内核架构【了解】
+- [x] WebKit、Blink浏览器内核架构【了解】
 - [ ] Http/TCP协议
 	- [ ] get/post区别
 	- [ ] 其他
