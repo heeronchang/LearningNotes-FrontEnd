@@ -46,14 +46,13 @@
 	- [ ] get/post区别
 	- [ ] 其他
 - [x] Socket【了解】
-- [ ] TypeScript/Flow
-	- [ ] TypeScript
-	- [ ] Flow
+- [ ] TypeScript
+	- [x] TypeScript 基础
 - [ ] Canvas/WebGL【了解】
 	- [x] Canvas
 	- [ ] WebGL
 - [ ] WebApp【了解】
-- [ ] Web语义化
+- [x] Web语义化
 - [ ] W3C标准
 ---
 - [ ] Node.js
