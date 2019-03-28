@@ -4,7 +4,8 @@
 
 1. [Webpack基础](https://zhuanlan.zhihu.com/p/57722935)
 2. [Webpack中 publicPath](https://juejin.im/post/5ae9ae5e518825672f19b094)
-3. [Webpack Code Splitting](https://blog.csdn.net/zjw0742/article/details/74518955)
+3. [url-loader 和 file-loader](https://segmentfault.com/a/1190000011487980)
+4. [Webpack Code Splitting](https://blog.csdn.net/zjw0742/article/details/74518955)
 
 ## Webpack 基础配置
 
@@ -152,3 +153,6 @@ plugins: [
 
 ### 模块懒加载
 
+#### webpack-bundle-analyzer
+
+Visualize size of webpack output files with an interactive zoomable treemap.
