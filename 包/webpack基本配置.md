@@ -6,6 +6,12 @@
 2. [Webpack中 publicPath](https://juejin.im/post/5ae9ae5e518825672f19b094)
 3. [url-loader 和 file-loader](https://segmentfault.com/a/1190000011487980)
 4. [Webpack Code Splitting](https://blog.csdn.net/zjw0742/article/details/74518955)
+5. [webpack 之 devtool 和 webpack-dev-server](https://www.cnblogs.com/jingmoxukong/p/7018671.html)
+6. [搭建 webpack-dev-server](http://www.cnblogs.com/penghuwan/p/6941616.html#_labelTop)
+7. [Webpack 是怎样运行的](https://zhuanlan.zhihu.com/p/52826586)
+8. [Webpack HMR 原理解析](https://zhuanlan.zhihu.com/p/30669007)
+9. [Webpack 是怎样运行的（一）](https://zhuanlan.zhihu.com/p/52826586)
+10. [Webpack 是怎样运行的（二）](https://zhuanlan.zhihu.com/p/53044886)
 
 ## Webpack 基础配置
 
