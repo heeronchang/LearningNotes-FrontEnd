@@ -64,6 +64,4 @@
 
 6. EventListener
 
-
-
 ## [javascript常见的内存泄漏](https://zhuanlan.zhihu.com/p/60538328)
