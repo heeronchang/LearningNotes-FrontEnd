@@ -1,0 +1,1 @@
+## [关于setInterval、setTimeout与requestAnimationFrame实现动画上的区别](https://github.com/zhansingsong/js-leakage-patterns/blob/master/requestAnimationFrame/requestAnimationFrame.md)
