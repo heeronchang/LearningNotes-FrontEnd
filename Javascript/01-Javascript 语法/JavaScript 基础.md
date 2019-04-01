@@ -404,3 +404,4 @@ function foo() {
 }
 ```
 也可以使用 call 或 apply 代替 bind 方法，但是 call 会立即执行，定时器的作用就失去了。
+
