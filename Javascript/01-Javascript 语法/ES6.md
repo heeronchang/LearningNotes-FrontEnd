@@ -91,7 +91,7 @@ Symbol 值通过 Symbol 函数生成，可以传入一个字符串参数(如果�
 
 ### 作为属性名
 
-由于每一个 Symbol 值都是不想等的，它可以作为标识符，用于对象的属性名。对于由多个模块构成的对象非常有用，
+由于每一个 Symbol 值都是不相等的，它可以作为标识符，用于对象的属性名。对于由多个模块构成的对象非常有用，
 有效地防止键被改写或覆盖。
 
 ### 消除魔术字符串
@@ -151,6 +151,11 @@ Symbol.for() 会被登记再全局环境中供搜索，后者不会。每次调�
 #### Symbol.species
 
 指向一个构造函数。创建衍生对象时会使用该属性。
+```JavaScript
+class MyArray extends Array {
+  static get [Symbol.species]() { return Array; }
+}
+```
 
 #### Symbol.match
 
@@ -258,3 +263,117 @@ const service = createWebService(baseUrl) {
 ```
 
 同理也可以实现数据库的 ORM 层。
+
+## Reflect 
+
+### 概述
+
+Reflect 设计的目的：
+1. 将 Object 对象上明显属于语言内部的操作方法（比如 Object.defineProperty）放到 Reflect 对象上。
+也就是说从 Reflect 对上可以拿到语言内部的方法。
+2. 修改某些 Object 方法的返回结果，让其变得更合理。比如， Object.defineProperty(obj, name, desc) 在无法定义一个属性时，
+会抛出一个错误，而 Relect.defineProperty(obj, name, desc) 则会返回 false。
+```JavaScript
+// 老写法
+try {
+  Object.defineProperty(target, property, attributes);
+  // success
+} catch(e) {
+  // failure
+}
+// 新写法
+if (Reflect.defineProperty(target, property, attributes)) {
+  // success
+} else {
+  // failure
+}
+```
+3. 让 Object 某些操作都变成函数行为。某些 Object 操作是命令式，如 name in obj, delete obj[name]，
+而 Reflect.has(obj, name), Reflect.deleteProperty(obj, name) 让它们变成了函数行为。
+```JavaScript
+// old
+'assign' in Object // true
+// new
+Reflect.has(Object, 'assign') // true
+```
+4. Reflect 对象的方法与 Proxy 对象的方法一一对应。只要是 Proxy 对象的方法，就能在 Reflect 对象上找到对应的方法。这就让 Proxy
+对象可以方便地调用对应的 Reflect 方法，完成默认的行为，作为修改行为的基础。
+```JavaScript
+Proxy(target, {
+  set(target, name, value, receiver) {
+    const success = Reflect.set(target, name, value, receiver);
+    if (success) {
+      // to do
+    }
+    return success;
+  }
+});
+```
+5. Reflect 对象让一些操作更已读。
+```JavaScript
+// old
+Function.prototype.apply(Math.floor, undefined, [1.75]) // 1
+// new 
+Reflect.apply(Math.floor, undefined, [1.75]) // 1
+```
+### 静态方法
+
+Reflect 对象一共有13个静态方法
+1. Reflect.apply(target, thisArg, args)
+
+等同于 Function.prototype.apply.call(target, thisArg, args) ，用于绑定 this 对象后执行给定函数。
+
+一般来说，如果要绑定一个函数的 this 对象，可以这样写 fn.apply(obj, arg) ， 但是如果函数定义了自己的 apply 方法，就只能这样写：
+Function.prototype.apply.call(target, thisArg, args) ，采用 Reflect.apply(target, thisArg, args) 可以简化操作。
+
+2. Reflect.construct(target, args)
+3. Reflect.get(target, name, receiver)
+
+如果 name 属性部署了读取函数(getter)，则读取函数的 this 指向 receiver。如果第一个参数不是对象会报错
+```JavaScript
+const obj = {
+  foo: 1,
+  bar: 2,
+  get baz() {
+    return this.foo + this.bar;
+  },
+};
+const receiver = {
+  foo: 2,
+  bar: 3,
+};
+Reflect.get(obj, 'baz', receiver) // 5
+```
+4. Reflect.set(target, name, value, receiver)
+
+同 get 方法，给 name 设置了赋值函数时，赋值函数的 this 绑定 receiver。
+
+5. Reflect.defineProperty(target, name, desc)
+6. Reflect.deleteProperty(target, name)
+
+删除成功或 name 不存在，均返回 true
+
+7. Reflect.has(target, name)
+
+对应 name in obj 里的 in 运算
+
+8. Reflect.ownKeys(target)
+
+基本等同于 Object.getOwnPropertyNames 和 Object.getOwnPropertySymbols 之和。
+
+9. Reflect.isExtensible(target)
+10. Reflect.preventExtensions(target)
+11. Reflect.getOwnPropertyDescriptor(target, name)
+12. Reflect.getPropertyOf(target)
+
+它与 Object.getPropertyOf 的区别是后会把传入的非对象参数转为对象后再运行，而前者会直接报错
+
+13. Reflect.setPropertyOf(target, prototype)
+
+对应 Object.setPropertyOf(target, prototype), 如果第一个参数不是对象，Reflect..报错，Object..返回参数本身。
+如果第一个参数是 undefined 或 null ，两者都会报错。
+
+
+
+
+### 实例：使用 Proxy 实现观察者模式
