@@ -373,7 +373,7 @@ Reflect.get(obj, 'baz', receiver) // 5
 对应 Object.setPropertyOf(target, prototype), 如果第一个参数不是对象，Reflect..报错，Object..返回参数本身。
 如果第一个参数是 undefined 或 null ，两者都会报错。
 
-
-
-
 ### 实例：使用 Proxy 实现观察者模式
+
+## Iterator 和 for...of 循环
+
