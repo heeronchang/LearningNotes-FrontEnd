@@ -68,3 +68,13 @@
 	- [x] Nodejs 链接 MongoDB
 	- [ ] MongoDB 进阶
 - [ ] Redis
+
+
+**Questions:**
+
+1. http 三次握手，状态码 401，htpp 版本1.1
+2. 浏览器解析渲染
+3. VueRouter 模式
+4. Vue 双向绑定
+5. Webpack 
+6. 跨域，如何解决，本地开发时跨域问题
