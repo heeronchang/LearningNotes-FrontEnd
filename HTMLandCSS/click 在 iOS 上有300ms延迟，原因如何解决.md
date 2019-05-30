@@ -8,7 +8,10 @@
 
 1. 禁止缩放
 ``` HTML
+// user-scalable=no 会禁用缩放，目前自己测试没有看到啥区别吖。。。
 <meta name="viewport" content="width=device-width, user-scalable=no">
+// or
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 ```
 2. 利用 FastClick
 其原理是，检测到 touch 事件后，立即发出模拟 click 事件，并且把浏览器 300 ms 之后真正触发的事件给阻断
