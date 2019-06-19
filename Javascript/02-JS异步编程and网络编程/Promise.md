@@ -55,5 +55,7 @@ promise.then(function(value){
 - `Promise.all()` 方法用于将多个 Promise 实例包装成一个新的 Promise 实例。参数接受数组或者具有 `Iterator` 接口，且返回的每个成员都是 Promise 实例。数组中所有 Promise 状态都变成 `fulfilled` 时，`Promise.all()` 状态才会变成 `fulfilled`， 数组中有一个状态变成 `rejected`，`Promise.all()` 状态就会变成 `rejected`，此时，第一个被 reject 的实例的返回值传递给 `Promise.all()` 的回调函数。
 - `Promise.race()` 方法同样是将多个 Promise 实例包装成一个新的实例。接受的参数和 `Promise.all()` 一样，不同的是，`Promise.race()` 会把数组中最先改变的状态的 Promise 实例的返回值传递给它的回调函数。
 - `Promise.reslove()` 将现有对象转为 Promise 对象。如果参数是 Promise 对象，直接返回该对象；如果参数是一个 thenable 对象（具有then方法的对象），会将这个对象转为 Promise 对象，然后立即执行 thenable 对象的 then 方法；如果参数不是具有 then 方法的对象或者就不是对象，是一个原始值，`Promse.resolve()` 方法返回一个新的 Promise 对象，状态为 `resolved`；如果 `Promise.resolve()` 没有参数，直接返回一个 `resolved` 状态的 Promise 对象，需要注意的是，立即 resolve 的 Promise 对象，是在本轮事件循环的结束时，而不是在下一轮事件循环的开始时；
-  - `Promise.reject()` 方法也会返回一个 Promise 实例，状态为 `rejected`，和 `Promise.resolve` 方法不同的是，`Promise.reject()` 方法的参数会原封不动的作为 reject 的理由返回，变成后续方法的参数。
-  -
+- `Promise.reject()` 方法也会返回一个 Promise 实例，状态为 `rejected`，和 `Promise.resolve` 方法不同的是，`Promise.reject()` 方法的参数会原封不动的作为 reject 的理由返回，变成后续方法的参数。
+  
+
+- `Promise.try()` 
