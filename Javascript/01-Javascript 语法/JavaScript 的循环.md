@@ -29,7 +29,7 @@ for ([initialization]; [condition]; [final-expression])
 
 ### `forEach`
 
-`forEach()` 方法安升序对数组的每一个元素执行提供的函数。跳过已删除或为初始化的元素。
+`forEach()` 方法按升序对数组的每一个元素执行提供的函数。跳过已删除或未初始化的元素。
 
 #### 使用方法
 `forEach(callback, [thisArg]` 返回值是 undefined。

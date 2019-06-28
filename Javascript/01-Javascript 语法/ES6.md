@@ -309,7 +309,7 @@ Proxy(target, {
   }
 });
 ```
-5. Reflect 对象让一些操作更已读。
+5. Reflect 对象让一些操作更易读。
 ```JavaScript
 // old
 Function.prototype.apply(Math.floor, undefined, [1.75]) // 1

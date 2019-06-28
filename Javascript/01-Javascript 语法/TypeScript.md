@@ -126,7 +126,7 @@ function getLength(something: string | number) : number {
   if ((<string>something).length) {
     return (<string>something).length;
   } else {
-    return something.toString().length; // 何不直接使用此表达式？？？
+    return something.toString().length; 
   }
 }
 ```
@@ -146,7 +146,7 @@ jQuery('#foo');
 ```TypeScript
 jQuery('#foo');
 ```
-**什么是生命文件**
+**什么是声明文件**
 把声明语句放到一个单独的文件（jQuery.d.ts）中，这个文件就是声明文件。
 
 使用时需要配置 tsconfig.json 中的 inclue, files, exclude 等。
