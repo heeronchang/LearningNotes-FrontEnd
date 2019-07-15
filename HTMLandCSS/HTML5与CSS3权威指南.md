@@ -825,15 +825,6 @@ getCurrentLocation(onSuccess, onError, options);
 
 #### DataTransfer 对象的属性与方法
 
-
-# FullScreen API
-
-根据 DOM 对象的根结点对象 document.documentElement 或元素的 requestFullScreen 判断浏览器是否支持全屏。
-
-通过 DOM 对象或某个元素的 exitFullScreen 方法或 CanvelFullScreen 退出全屏状态。
-
-事件：fullscreenchange
-
 # 锁定鼠标指针 API
 
 鼠标指针锁定 API 是一个关于鼠标指针的移动信息（不是鼠标光标的绝对位置信息）的 API。它允许开发者获取鼠标指针的移动信息，将鼠标事件锁定到单个目标元素上，消除对于鼠标指针在某个方向上可移动距离的限制，同时从屏幕上移除（本来可见的）鼠标指针。
