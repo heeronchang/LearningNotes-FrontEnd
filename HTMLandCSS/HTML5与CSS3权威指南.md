@@ -826,21 +826,6 @@ getCurrentLocation(onSuccess, onError, options);
 #### DataTransfer 对象的属性与方法
 
 
-# Page Visibility API
-
-该 API 让开发者知道一个 Web 页面在何时变为可见或获取焦点。
-
-#### 实现 Page Visibility API
-
-1. 检测浏览器是否支持
-`document.hidden` `document.mozHidden` `document.msHidden` `document.webkitHidden`
-
-2. 监听 visibilityState
-`document.visibilityState` 取值 visible,hidden,prerender
-document.addEventListener(visibilityChange, function() {
-  if (document["hidden"]) {}
-}, false)
-
 # FullScreen API
 
 根据 DOM 对象的根结点对象 document.documentElement 或元素的 requestFullScreen 判断浏览器是否支持全屏。
