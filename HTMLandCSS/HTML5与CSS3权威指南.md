@@ -744,51 +744,8 @@ xhr.send(buffer);
 
 H5 实现以 AJAX 方式请求得到另一个域的数据：只需要在该域中提供一个服务端的脚本文件来响应这个请求，返回该请求所需的数据即可，服务端返回响应的响应头信息中添加 Access-Control-Allow-Origin 参数指定为允许向该页面请求数据的域名+端口号，“*”代表所有域。
 
-# 获取地理位置信息
 
-H5 中为 window.navigator 新增了 geolocation 属性，用来获取用户位置信息
-
-### 获取当前地理位置
-
-```JavaScript
-// 获取成功，获取失败，可选属性
-getCurrentLocation(onSuccess, onError, options);
-```
-获取地理位置成功的回调函数有一个参数 position 对象。
-
-第三个可选参数列表：
-- enableHighAccuracy
-- timeout
-- maximumAge 对地理位置信息缓存对有效时间（单位毫秒）
-
-### 持续监听当前地理位置信息
-
-`int watchCurrentPosition(onSuccess, onError, options)`
-
-返回值 int 与 setInterval 返回值类似，可以使用 clearWatch 清除监听
-
-### 停止获取当前用户的地理位置信息
-
-`void clearWatch(watchId)`
-
-### position 对象
-
-获取成功的回调函数中通过 position 对象获取地理位置信息
-
-- latitude
-- longitude
-- altitude
-- accuracy   
-- altitudeAccuracy
-- heading
-- speed
-- timestamp
-
-### 在页面上使用 Google 地图
-
-# 拖放 API 与 通知 API
-
-## 拖放 API
+# 拖放 API 
 
 ### 实现拖放的步骤
 
