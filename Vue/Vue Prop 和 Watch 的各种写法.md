@@ -77,6 +77,9 @@ var vm = new Vue({
     }
   },
   watch: {
+    a0(val, oldVal) {
+      console.log(val, oldVal);
+    },
     a: function (val, oldVal) {
       console.log('new: %s, old: %s', val, oldVal)
     },
