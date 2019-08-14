@@ -1,11 +1,11 @@
 # 盗墓笔记之前端篇
-- [ ] JavaScript
+- [x] JavaScript
 	- [x] JavaScript基础
 	- [x] Aysnc Wait
 	- [x] Promise
 	- [x] Ajax
 	- [x] axios
-	- [ ] ES6
+	- [x] ES6
 	- [x] JQuery基础
 - [ ] CSS
 	- [x] CSS 基础
@@ -19,10 +19,10 @@
 		- [x] Vue
 		- [x] Vue-router
 		- [x] Vuex
-	- [ ] Vue 原理/源码
-		- [ ] Vue
-		- [ ] Vue-router
-		- [ ] Vuex
+	- [x] Vue 原理/源码
+		- [x] Vue
+		- [x] Vue-router
+		- [x] Vuex
 - [ ] 自动化和模块化
 	- [x] webpack
 	- [ ] gulp
@@ -30,7 +30,7 @@
 - [x] 常用布局
 	- [x] 盒模型
 	- [x] Flex 布局
-- [ ] 浏览器兼容性和移动设备兼容性
+- [x] 浏览器兼容性和移动设备兼容性
 - [ ] 性能优化
 - [ ] 项目重构
 - [ ] JavaScript 设计模式
@@ -43,14 +43,13 @@
 - [ ] BootStrap【掌握】
 - [x] WebKit、Blink浏览器内核架构【了解】
 - [ ] Http/TCP协议
-	- [ ] get/post区别
-	- [ ] 其他
 - [x] Socket【了解】
 - [ ] TypeScript
 	- [x] TypeScript 基础
-- [ ] Canvas/WebGL【了解】
+- [ ] Canvas/WebGL/SVG
 	- [x] Canvas
 	- [ ] WebGL
+	- [ ] SVG
 - [ ] WebApp【了解】
 - [x] Web语义化
 - [ ] W3C标准
