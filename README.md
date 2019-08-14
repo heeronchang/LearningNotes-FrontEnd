@@ -1,5 +1,12 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-14 14:33:30
+ * @LastEditTime: 2019-08-14 15:03:44
+ * @LastEditors: Please set LastEditors
+ -->
 # 盗墓笔记之前端篇
-- [x] JavaScript
+- [x] [JavaScript](./Javascript/index.md)
 	- [x] JavaScript基础
 	- [x] Aysnc Wait
 	- [x] Promise
