@@ -18,6 +18,10 @@
 
 [深度拷贝](./01-Javascript语法/深度拷贝.md)
 
+[严格模式](./01-Javascript语法/严格模式.md)
+
+[原型](./01-Javascript语法/原型.md)
+
 [Canvas](./01-Javascript语法/Canvas.md)
 
 [ES6](./01-Javascript语法/ES6.md)
