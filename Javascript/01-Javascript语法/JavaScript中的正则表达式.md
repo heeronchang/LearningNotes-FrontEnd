@@ -3,8 +3,8 @@
 JS 中正则表达式相较于等效的字符串运算，有显著的性能优势
 
 ## JS 中处理正则的方法有：
-- regexp.exec
-- regexp.test
+- regexp.exec (最强大、最慢)
+- regexp.test (最简单、最快)
 - string.match
 - string.replace
 - string.search
