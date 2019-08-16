@@ -10,6 +10,8 @@
 
 [闭包](./01-Javascript语法/闭包.md)
 
+[操作符](./01-Javascript语法/操作符.md)
+
 [继承和原型链](./01-Javascript语法/继承和原型链.md)
 
 [柯里化](./01-Javascript语法/柯里化.md)
