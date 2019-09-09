@@ -28,6 +28,8 @@
 
 [ES6](./01-Javascript语法/ES6.md)
 
+[ES6 判断两个对象相等问题](./01-Javascript语法/ES6判断两个对象相等-is.md)
+
 [Generator](./01-Javascript语法/Generator.md)
 
 [JavaScript HTML DOM](./01-Javascript语法/JavaScript-HTML-DOM.md)
@@ -73,3 +75,4 @@
 ## Javascript 设计模式
 
 [发布订阅模式](./03-JavaScript设计模式.md/发布订阅模式.md)
+
