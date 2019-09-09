@@ -3,15 +3,17 @@
 ## 相关博客
 
 1. [Webpack基础](https://zhuanlan.zhihu.com/p/57722935)
-2. [Webpack中 publicPath](https://juejin.im/post/5ae9ae5e518825672f19b094)
-3. [url-loader 和 file-loader](https://segmentfault.com/a/1190000011487980)
-4. [Webpack Code Splitting](https://blog.csdn.net/zjw0742/article/details/74518955)
-5. [webpack 之 devtool 和 webpack-dev-server](https://www.cnblogs.com/jingmoxukong/p/7018671.html)
-6. [搭建 webpack-dev-server](http://www.cnblogs.com/penghuwan/p/6941616.html#_labelTop)
-7. [Webpack 是怎样运行的](https://zhuanlan.zhihu.com/p/52826586)
-8. [Webpack HMR 原理解析](https://zhuanlan.zhihu.com/p/30669007)
-9. [Webpack 是怎样运行的（一）](https://zhuanlan.zhihu.com/p/52826586)
-10. [Webpack 是怎样运行的（二）](https://zhuanlan.zhihu.com/p/53044886)
+2. [Webpack 是怎样运行的（一）](https://zhuanlan.zhihu.com/p/52826586)
+3. [Webpack 是怎样运行的（二）](https://zhuanlan.zhihu.com/p/53044886)
+4. [Webpack中 publicPath](https://juejin.im/post/5ae9ae5e518825672f19b094)
+5. [搭建 webpack-dev-server](http://www.cnblogs.com/penghuwan/p/6941616.html#_labelTop)
+6. [webpack 之 devtool 和 webpack-dev-server](https://www.cnblogs.com/jingmoxukong/p/7018671.html)
+7. [深入浅出的webpack构建工具---devTool中SourceMap模式详解](https://www.cnblogs.com/tugenhua0707/p/9464984.html#_labe1_2)
+8. [Webpack Code Splitting](https://blog.csdn.net/zjw0742/article/details/74518955)
+9.  [[webpack] 你真的知道 css-loader 怎么用吗？](https://juejin.im/entry/5826e755c4c9710054313d6e)
+10. [url-loader 和 file-loader](https://segmentfault.com/a/1190000011487980)
+11. [Webpack HMR 原理解析](https://zhuanlan.zhihu.com/p/30669007)
+12. [Webpack入门之遇到的那些坑，系列示例Demo](https://dailc.github.io/2017/03/13/webpackfreshmanualAndBug.html)
 
 ## Webpack 基础配置
 
@@ -22,7 +24,7 @@ Webpack 作为一个模块打包器，可以通过各种 loader 和插件的加�
 `npm init`
 `npm i -D webpack webpack-cli`
 
-### loader 配置
+### 配置
 
 除了 js 文件可以直接打包外，其它的资源，如 CSS，HTML，图片等都需要使用 相应的 loader。
 
@@ -67,6 +69,10 @@ url-loader 几乎支持所有资源的预处理，可以将比较小的资源文
 #### 输出文件清理（clean-webpack-plugin)
 
 由于输出的 js、css 文件名里都有哈希值，每次构建都无法覆盖先前的输出文件，clean-webpack-plugin 可以自动删除先前的输出文件。
+
+#### Webpack Code Splitting
+
+使用 `CommonsChunkPlugin` 和 `webpack-bundle-analyzer` 
 
 ### package.json 配置
 
