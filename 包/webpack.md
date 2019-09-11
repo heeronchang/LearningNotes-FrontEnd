@@ -73,6 +73,7 @@ url-loader 几乎支持所有资源的预处理，可以将比较小的资源文
 #### Webpack Code Splitting
 
 使用 `CommonsChunkPlugin` 和 `webpack-bundle-analyzer` 
+[Webpack Code Splitting]('./webpack之CodeSplitting.md')
 
 ### package.json 配置
 
