@@ -169,3 +169,7 @@ plugins: [
 #### webpack-bundle-analyzer
 
 Visualize size of webpack output files with an interactive zoomable treemap.
+
+## HMR 工作流程图
+
+<img src="../images/HMR工作流程图解.jpg" alt="HMR工作流程图解" title="HMR工作流程图解" width="500" />
