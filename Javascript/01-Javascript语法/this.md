@@ -56,3 +56,5 @@
 
 9. 函数被当作事件处理函数时，它 this 指向触发事件的元素。
 
+10. setTimeout 回调函数的 this 指向全局对象 window。
+  > 在严格模式下，setTimeout( )的回调函数里面的this仍然默认指向window对象， 并不是undefined
