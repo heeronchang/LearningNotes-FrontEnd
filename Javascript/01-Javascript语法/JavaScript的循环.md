@@ -4,7 +4,7 @@
 
 ### `for`
 
-创建一个循环，包含三个可选的表达式。
+创建一个循环，包含三个可选的表达式。不会跳过已删除或未初始化的元素。
 
 #### 使用方法
 
@@ -12,8 +12,7 @@
 for ([initialization]; [condition]; [final-expression])
    statement
 ```
-- initialization 通常用于初始化一个计数器，可以使用 var 或 let 声明一个变量，使用 var 声明的变量不是该循环的局部变量，
-  而是和 for 循环处在同样的作用域中。let 声明的变量是局部变量。
+- initialization 通常用于初始化一个计数器，可以使用 var 或 let 声明一个变量，使用 var 声明的变量不是该循环的局部变量，而是和 for 循环处在同样的作用域中。let 声明的变量是局部变量。
 - condition 一个表达式，用于判断每次循环是否能被执行。
 - final-expression 每次循环之后执行的表达式。执行时机是下一次 condition 的计算之前。
 - statement condition 为 true 时执行。
@@ -48,19 +47,20 @@ for ([initialization]; [condition]; [final-expression])
     let items = ['item1', 'item2', 'item3', 'item4', 'item5', 'item6'];
 
     items.forEach(function (item, index, items) {
-      console.log(item); // 'item1' 'item2' 'item4' 'item5' 'item6' item3 将不会被遍历到
+      console.log(item); // 'item1' 'item2' 'item4' 'item5' 'item6' 。 item3 将不会被遍历到
       if (index == 1) {
         items.splice(index, 1);
       }
     });
+    console.log(items); // ["item1", "item3", "item4", "item5", "item6"]
 ```
 特点：调用 forEach 后添加到数组的元素不会被 callback 访问到，如果存在的元素值被修改，则传入 callback 的是
-遍历到该被修改元素的那一刻的值。**如果已访问的元素被删除（例如shift），之后的一个元素将被跳过调用。因为元素被移除之后的元素会向前移动一个位置**
+遍历到该被修改元素的那一刻的值。**如果已访问的元素被删除（例如shift），之后的一个元素将被跳过调用。因为被移除元素之后的元素会向前移动一个位置**
 不能使用 `break` 和 `return` 语句中止或跳出循环。可以配合 filter 方法过滤之后再用 froEach 方法遍历。
 
 ### `for...in`
 
-以任意顺序遍历对象自有的、继承的、可枚举的、非 Symbol 的属性。对每一个不同的属性，语句都会被执行。
+以**任意顺序**遍历对象自有的、继承的、可枚举的、非 Symbol 的属性。对每一个不同的属性，语句都会被执行。
 
 #### 使用方法
 
@@ -75,6 +75,8 @@ for...in 循环只遍历可枚举属性。另外在遍历过程中添加的属�
 
 通过使用 `getOwnPropertyNames()` 或 `hasOwnProperty` 来确定某属性是否是对象自身的属性。
 
+[forin相关问题一](https://stackoverflow.com/questions/5263847/javascript-loops-for-in-vs-for)
+
 ### `for...of`
 
 在可迭代对象上（Array、Map、Set、String、TypedArray、arguments 等）创建一个迭代循环，调用自定义迭代钩子，并为每一个不同的属性执行语句。
@@ -85,7 +87,7 @@ for...in 循环只遍历可枚举属性。另外在遍历过程中添加的属�
 for (variable of iterable) {...}
 ```
 - variable 每次迭代中将不同的属性分配给变量。
-- 被迭代枚举其属性的对象。
+- iterable 被迭代枚举其属性的对象。
 
 循环中可以调用 `break`, `throw`, `continue`, `return` ，关闭迭代器，终止迭代。
 
