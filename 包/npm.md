@@ -42,7 +42,7 @@ config/production.json, ... 并合并 default 配置。
 
 单页面应用程序使用 H5 的 History API。
 
-由于单页面应用程序一般只提供一个 index.html 供浏览器访问。一般地程序中的导航使用 H5 的
+由于单页面应用程序一般只提供一个 index.html 供浏览器访问。一般程序中的导航使用 H5 的
 History API 实现。这样就会有一些问题：用户点击 refresh 按钮，或者直接访问非登陆页，此时，
 web 服务器就会获取资源失败并返回 404。
 

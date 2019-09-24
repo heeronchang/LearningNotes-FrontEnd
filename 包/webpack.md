@@ -14,6 +14,8 @@
 10. [url-loader 和 file-loader](https://segmentfault.com/a/1190000011487980)
 11. [Webpack HMR 原理解析](https://zhuanlan.zhihu.com/p/30669007)
 12. [Webpack入门之遇到的那些坑，系列示例Demo](https://dailc.github.io/2017/03/13/webpackfreshmanualAndBug.html)
+13. [你的Tree-Shaking并没什么卵用](https://segmentfault.com/a/1190000012794598?utm_source=tag-newest)
+14. [前端体验优化tree-shaking](http://www.imooc.com/article/280454)
 
 ## Webpack 基础配置
 
