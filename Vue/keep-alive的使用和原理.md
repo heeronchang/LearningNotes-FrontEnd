@@ -25,7 +25,7 @@ keep-alive 提供了 `include` 和 `exclude` 两个属性，进行有条件地�
 </keep-alive>
 
 <!-- 将不会缓存 name 为 a 的组件 -->
-<keep-alive exclude="b">
+<keep-alive exclude="a">
   <component></component>
 </keep-alive>
 ```
