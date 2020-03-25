@@ -1,5 +1,5 @@
-# 盗墓笔记之前端篇
-- [x] [JavaScript](./Javascript/index.md)
+# 前端学习🌲
+- [x] JavaScript
 	- [x] JavaScript基础
 	- [x] Aysnc Wait
 	- [x] Promise
@@ -7,7 +7,7 @@
 	- [x] axios
 	- [x] ES6
 	- [x] JQuery基础
-- [ ] [CSS](./HTMLandCSS/index.md)
+- [ ] CSS
 	- [x] CSS 基础
 	- [x] CSS 3基础
 	- [ ] CSS3 高级
@@ -59,7 +59,7 @@
 - [x] Web语义化
 - [ ] W3C标准
 ---
-- [ ] [Node.js](./nodejs/index.md)
+- [ ] Node.js
     - [x] Node.js 基础
 - [ ] Express
     - [x] Express 基础
